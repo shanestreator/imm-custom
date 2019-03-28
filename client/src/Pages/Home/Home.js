@@ -1137,7 +1137,7 @@ export default class Home extends Component {
                 low as
               </p>
               <p>
-                <strong className="home__dark-red">$2.50 per manual!</strong>
+                <strong className="home__dark-red">$3.00 per manual!</strong>
               </p>
 
               <Link to="/store">
