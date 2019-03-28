@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import commaNumber from 'comma-number'
-import { calcForCartTotal } from '../../../Utils/Utils'
+import { calcForCartTotal, itemModalAddZeros } from '../../../Utils/Utils'
 
 export default function OrderSummaryTable({
   productsInCart,
@@ -27,10 +27,7 @@ export default function OrderSummaryTable({
             {productsInCart.length === 1 ? 'item' : 'items'}(
             {productsInCart.length}):
           </td>
-          <td className="">
-            ${total}
-            .00
-          </td>
+          <td className="">${total}</td>
         </tr>
 
         <tr
@@ -56,10 +53,7 @@ export default function OrderSummaryTable({
           style={{ fontSize: '14px' }}
         >
           <td>Total before tax:</td>
-          <td className="">
-            ${total}
-            .00
-          </td>
+          <td className="">${total}</td>
         </tr>
 
         <tr
@@ -90,10 +84,11 @@ export default function OrderSummaryTable({
           <td>
             $
             {commaNumber(
-              calcForCartTotal(productsInCart) +
-                Math.round(calcForCartTotal(productsInCart) / 10)
+              itemModalAddZeros(
+                calcForCartTotal(productsInCart) +
+                  Math.round(calcForCartTotal(productsInCart) / 10)
+              )
             )}
-            .00
           </td>
         </tr>
       </tbody>

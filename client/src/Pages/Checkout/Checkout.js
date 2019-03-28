@@ -11,7 +11,11 @@ import classNames from 'classnames'
 import FinalOrderSummaryTable from '../../Components/Common/Cart/FinalOrderSummaryTable'
 import commaNumber from 'comma-number'
 import UseStripeCheckout from '../../Components/Common/Checkout/UseStripeCheckout'
-import { calcForCartTotal, totalManualsInCartCalc } from '../../Utils/Utils'
+import {
+  calcForCartTotal,
+  totalManualsInCartCalc,
+  itemModalAddZeros
+} from '../../Utils/Utils'
 import { removeAllFromCart } from '../../Redux/Actions/cartActions'
 import axios from 'axios'
 
@@ -228,8 +232,12 @@ class Checkout extends Component {
     const { shipToIsEmpty } = this.props.checkout
 
     const cartTotalNum = calcForCartTotal(productsInCart)
-    const total = commaNumber(cartTotalNum)
+    const total = commaNumber(
+      itemModalAddZeros(calcForCartTotal(productsInCart))
+    )
     const totalManuals = totalManualsInCartCalc(productsInCart)
+
+    console.log('total: ', total)
 
     return (
       <div
