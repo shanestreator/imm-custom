@@ -169,7 +169,7 @@ class Checkout extends Component {
               purchase_units: [
                 {
                   amount: {
-                    value: `${total}.00`
+                    value: `${total}`
                   }
                 }
               ]
@@ -208,8 +208,6 @@ class Checkout extends Component {
   onSubmit = evt => {
     evt.preventDefault()
 
-    console.log('submit clicked')
-
     const shipTo = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -238,8 +236,6 @@ class Checkout extends Component {
       itemModalAddZeros(calcForCartTotal(productsInCart))
     )
     const totalManuals = totalManualsInCartCalc(productsInCart)
-
-    console.log('total: ', total)
 
     return (
       <div
