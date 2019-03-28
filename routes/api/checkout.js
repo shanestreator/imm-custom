@@ -61,7 +61,7 @@ router.post('/', async (req, res, next) => {
     const newShipTo = await ShipTo.create(shipTo)
     console.log('>>>-----> NEW_SHIP_TO: ', newShipTo)
 
-    res.status(200).json({
+    return res.status(200).json({
       message: 'ShipTo successful',
       shipTo: newShipTo
     })
@@ -99,7 +99,7 @@ router.put('/:shippingId', async (req, res, next) => {
     }
     console.log('>>>-----> UPDATED_SHIP_TO  : ', shipTo)
 
-    res.status(200).json({
+    return res.status(200).json({
       message: 'ShipTo successful',
       shippingId: updatedShipTo._id,
       shipTo

@@ -208,6 +208,8 @@ class Checkout extends Component {
   onSubmit = evt => {
     evt.preventDefault()
 
+    console.log('submit clicked')
+
     const shipTo = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
